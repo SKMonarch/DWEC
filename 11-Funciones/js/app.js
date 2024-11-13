@@ -86,6 +86,171 @@ const doble = function(x) {
 
 
 
-//ARROW FUNCTIONS
+//ARROW FUNCTIONSeliminar function, llaves, return
+//no tienen propiedad hoisting
 
 const doble2 = x => 2*x;
+
+//MÉTODO FOREACH
+/*Permite iterar sobre elementos de array, set, map
+No devuelve un nuev array, no modifica el array original
+No puedo parar el ciclo de iteración con break, continue
+No devuelve return
+
+Sintaxis:
+
+
+array.forEach(function(elemento, indice, array_original){
+    //instrucciones;
+})
+
+*/
+
+const desayunos = ["yogurt","petisuis","rollo canela"]
+
+desayunos.forEach(function(elemento){
+    console.log(elemento);
+})
+
+
+//arrow function
+
+desayunos.forEach(d => console.log(d));
+
+
+//forEach en conjutnos set
+const conjunto = new Set(["patata","zanahoria","brocoli","lechuga"])
+
+conjunto.forEach(function(verduras){
+    console.log(verduras);
+})
+
+
+conjunto.forEach(v => console.log(v));
+
+//forEach en map
+const mapa = new Map([
+    [1,"hola"],
+    [2,"Adios"],
+    [3,"bye"]
+])
+
+
+mapa.forEach(function(saludos,indice){
+    console.log(saludos,indice)
+})
+
+
+mapa.forEach((saludos,indice) =>console.log(saludos,indice));
+
+
+
+//Array con edades de alumnos, con un foreach realizamos el conteo de llos mayores de edad
+edades = [23, 35, 42, 29, 18, 27, 33,12,2,3,4,5,6,7,8, 40, 25, 19, 31, 28, 36, 22, 30]
+function mayoresEdades(array){
+    let mayores = 0;
+    array.forEach(function(edad){
+        if (edad >= 18){
+            mayores++;   
+        }
+    });
+    return mayores;
+}
+
+console.log(mayoresEdades(edades));
+
+//Array con notas y realizais la media
+
+nota = [5,3,6,8,10,9,4,2,3,7,8,8,6,4,5,8,9,4]
+
+
+function mediaNotas(array){
+    let total = 0;
+    array.forEach(function(elemento){
+        total = total + elemento;
+        
+    })
+    
+    const media = total / array.length;
+    console.log(`La media es : ${media}`)
+}
+
+
+mediaNotas(nota);
+//consigue un nuevo array con los elementos pares
+const nums = [1, 2, 3, 4];
+const pares2 = nums.filter(num => num % 2 == 0);
+console.log(pares2);
+//consigue nuevo array con las palabras de más de 4 letras
+const palabras = ["luna","sol","cielo","estrella"]
+const cuatroLetras = palabras.filter(cuatro => cuatro.length >= 4 );
+console.log(cuatroLetras);
+//El método .map() sirve para cerar un nuevo array aplicandole una función a cada elemento del array
+//Contiene estos 3 parámetros (elemento,indice(opcional),array(opcional))
+const numeros = [1, 2, 3, 4];
+const dobles = numeros.map(num => num * 2);
+
+console.log(dobles); //Un nuevo array con el doble de cada elemento del otro array
+
+const usuarios = [
+    { nombre: "Ana", edad: 28 },
+    { nombre: "Luis", edad: 34 },
+    { nombre: "Juan", edad: 23 }
+];
+
+const nombres = usuarios.map(usuario => usuario.nombre);
+const edades2 = usuarios.map(usuario => usuario.edad);
+console.log(nombres); // Este array contienen los nombres
+console.log(edades2);// Array con las edades 
+
+//El método .filter() crea un nuevo array con los elementos que cimplen una condición específica
+const numeros2 = [1, 2, 3, 4, 5];
+const pares = numeros2.filter(num => num % 2 === 0);
+
+console.log(pares); 
+
+
+// El método .reduce()  reduce un array a un solo valor aplicando una función acumulativa
+// a cada elemento,suma todos los valores del array
+const numeros3 = [1, 2, 3, 4];
+const suma = numeros.reduce((acumulador, num) => acumulador + num, 0);
+
+console.log(suma); 
+
+
+// El método .find devuelve el primer elemento que cumpla con una condición o undefined si no lo encuentra
+
+
+const numeros4 = [1, 2, 3, 4];
+const primerPar = numeros4.find(num => num % 2 === 0);
+const noEncontrar = numeros4.find(num => num > 29 );
+console.log(primerPar); 
+console.log(noEncontrar);
+
+// El método .findIndex(), igual al .find() pero devuelve el indice o -1 si no se encuentra
+const numeros5 = [1, 2, 3, 4];
+const indicePar = numeros5.findIndex(num => num % 2 === 0);
+const noEncontrarIndex = numeros4.findIndex(num => num > 29 );
+console.log(indicePar); 
+console.log(noEncontrarIndex);
+
+//El método .some() verifica si existe ese elemento y devuelve true o false
+const numeros6 = [1, 3, 5];
+const tienePar = numeros6.some(num => num % 2 === 0);
+
+console.log(tienePar); 
+
+//El método .every() verifica si todos cumplen la condicion,devuelve true o false
+
+const numeros7 = [2, 4, 6];
+const todosPares = numeros7.every(num => num % 2 === 0);
+
+console.log(todosPares); 
+
+//El método .concat une arrays
+
+const array1 = [1, 2];
+const array2 = [3, 4];
+const combinado = array1.concat(array2);
+
+console.log(combinado); 

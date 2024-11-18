@@ -177,14 +177,7 @@ function mediaNotas(array){
 
 
 mediaNotas(nota);
-//consigue un nuevo array con los elementos pares
-const nums = [1, 2, 3, 4];
-const pares2 = nums.filter(num => num % 2 == 0);
-console.log(pares2);
-//consigue nuevo array con las palabras de más de 4 letras
-const palabras = ["luna","sol","cielo","estrella"]
-const cuatroLetras = palabras.filter(cuatro => cuatro.length >= 4 );
-console.log(cuatroLetras);
+
 //El método .map() sirve para cerar un nuevo array aplicandole una función a cada elemento del array
 //Contiene estos 3 parámetros (elemento,indice(opcional),array(opcional))
 const numeros = [1, 2, 3, 4];
@@ -254,3 +247,71 @@ const array2 = [3, 4];
 const combinado = array1.concat(array2);
 
 console.log(combinado); 
+
+
+
+
+//MAP
+/*
+Itera sobre los elementos del array
+Devuelve un nuevo array -> ¡¡¡¡Del mismo Tamaño que el original!!!
+No modifica el original
+No podemos parar el ciclo de iteración
+USO: para transformar los elementos del array no para filtrarlos!!!
+
+Sintaxis;
+const nuevoArray = array.map/function(elemnto,indice,array){
+    //instrucciones
+})
+    */
+
+
+const numerosArray = [2,3,4,1];
+const dobles2 = numerosArray.map(num => num*2);
+console.log(doble2);
+
+
+const palabras2 =["caracola","mesa","silla","tomcat"];
+
+const letras2 = palabras2.map(letras => letras.length);
+console.log(letras2);
+
+
+/*Filter
+Recorre todos los elementos de un array , les aploca una función  y
+si cumplen la condición aploca el array se filtra.
+Puede devolver un array de igual logitud o de menor longitud que el original
+Si ninguún elemento cumple la condición devuelve un array vacío.
+ 
+
+const nuevoArray = array.filter(function(elemento,indice,array){
+    //instrucciones
+    })*/
+
+
+    //consigue un nuevo array con los elementos pares
+const nums = [1, 2, 3, 4];
+const pares2 = nums.filter(num => num % 2 == 0);
+console.log(pares2);
+//consigue nuevo array con las palabras de más de 6 letras
+const palabras = ["luna","sol","cielo","estrella"]
+const cuatroLetras = palabras.filter(cuatro => cuatro.length >= 6 );
+console.log(cuatroLetras);
+
+/*funcion tradicional a la que se le pase un array y una letra
+ y devuelva un array con las palabras que incluyen la letra indicada*/ 
+
+ function filtrarPorLetra(array, letra) {
+   letra = letra.toLowerCase();
+
+   
+    const resultado = array.filter(palabra => palabra.toLowerCase().includes(letra));
+
+    return resultado;
+}
+
+const palabras3 = ["Manzana", "Pera", "Plátano", "Melón", "Mango"];
+const letraBuscada = "p";
+
+const palabrasFiltradas = filtrarPorLetra(palabras3, letraBuscada);
+console.log(palabrasFiltradas);

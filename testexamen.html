@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            ¿Qué muestra por consola el código en la Figura1?
+            a. "Hola"
+            b. undefined Correcto,valor desconocido
+            c. null
+        */
+        let saludo;
+        console.log(saludo);
+        /*
+            ¿Qué se imprime tras ejecutar el código de la Figura2?
+            a. undefined
+            b. 8 correcto C=5 si no se define otro valor,si se ponen valores de más sigue          
+            c. 11
+        */
+        function sumar(a,b,c=5){
+             console.log(a+b+c);
+        }
+        let a = 2;
+        let b = 4;
+        let c = 2;
+        let d = c;
+        sumar(a,b,c,d);
+    /*
+            ¿Qué devuelve el método toString() aplicado en el arreglo de
+la Figura3?
+            a. "A,B,C"; correcto,pilla las comas del array y las convierte a string
+            b. "ABC";
+            c. "A B C";
+        */
+        const arr = ["A","B","C"];
+        console.log(arr.toString());
+/*
+            ¿Qué resultado se muestra en la consola tras ejecutar el
+código de la Figura4?
+            a. [true false false] devuelve un valor booleano y el segundo valor es á y es keysensitive
+            b. ["mesa"]
+            c. ["mesa" "lápiz"]
+        */
+        const cosas = ["mesa","lápiz","boli"];
+        console.log(cosas.map(x => x.includes("a")));
+    /*
+            El código de la Figura5 que utiliza un objeto Set mostrará en
+consola:
+            a. 5
+            b. 3 Los sets no tienen duplicidar,por lo tanto su size es de 3
+            c. Error
+        */
+        const set = new Set([1, 2, 3, 2, 3]);
+        console.log(set.size);
+        /*
+            Indica cómo acceder al elemento con clave 4 de la siguiente
+estructura de datos
+            a. datos.set(4);
+            b. datos.get(4); correcto
+            c. datos.has(4);
+        */
+        const datos = new Map([
+            [1, "hola"],
+            [2,"chao"],
+            [3,"bye"],
+            [4,"hello"]
+        ]);
+        datos.get(4);
+        /*
+            ¿Qué valor devuelve el forEach en la Figura6?
+            a. 2 y 4
+            b. 4 el valor 2 es el unico que pasa por la condicional
+            c. undefined
+        */
+        const numbers = [1, 2, 3];
+        numbers.forEach(function (num){
+            if(num%2===0){
+                console.log(num * 2)
+            }
+        });
+/*
+            Completa el código para filtra los impares positivos del
+array
+        */
+        function imparesPositivos(arr) {
+            const nuevaCadena = arr.filter(x => x%2 !== 0 && x>0)
+            return nuevaCadena;
+        }
+        
+        console.log(imparesPositivos([-1,1,3,-3,2,4]));
+        /*
+            Si haces un shift al array de la Figura8, ¿qué elemento se
+elimina?
+            a. 3
+            b. 1 extrae el primer valor y lo mete a una variable
+            c. undefined
+        */
+        const valores = [1, 2, 3];
+        const eliminado = valores.shift();
+        console.log(eliminado);
+        /*
+            Si mostramos por consola el resultado de
+Array.isArray([1,2,3]), será:
+            a. true lo valora como un array
+            b. false
+            c. undefined
+        */
+        console.log(Array.isArray([1,2,3]));
+            /*
+            El bucle for...of en la Figura11 tiene como salida:
+            a. a b c
+            b. a b undefined c muestra el valor,al faltar uno se le da valor de undefined al no estar establecido
+            c. 0 1 undefined 2
+        */
+        const letras = ["a", "b", ,"c"];
+        for (let i of letras) {
+            console.log(i);
+        }
+/*
+            Completa la función para que sume 1 a los valores positivos y
+reste 1 a los negativos
+        */
+        function incrementarPositivos(arr) {
+            const nuevosNumeros = [];
+            for(let i of arr){
+                if(i>0){
+                    nuevosNumeros.push(i+1);
+                }else{
+                    nuevosNumeros.push(i-1);
+                }
+            }         
+            return nuevosNumeros;
+        }
+        const numeros = [-1,-2, 1,2]; //que devuelva [-2, -3, 2, 3]
+        console.log(incrementarPositivos(numeros));
+/*
+            Si tengo un array con nombres de personas y quiero conseguir
+una copia del mismo
+            a. b y c son correctas correcto .slice sin parametros devuelve el total y [...personas] ya crea su propia copia completa
+
+            b. const copia = personas.slice();
+            c. const copia = [...personas];
+        */
+       const personas = ["Pepe", "Marta", "Juan", "Laura"];
+/*
+            Qué imprime el siguiente código?
+            a. "object" da objeto,ya que null es un tipo de dato primitivo que identifica el estado de un objeto vacio
+            b. "null"
+            c. "undefined"
+       */
+       let valor = null;  
+       console.log(typeof valor);
+/*  
+            ¿Qué imprime por consola la llamada a la función ?
+            a. 12
+            b. 10
+            c. 9 el valor y = 10 es si no hay un valor definido y si pones valores demas no los toma en cuenta
+       */
+       function calcular(x, y = 10) {  
+            return x + y;  
+        }
+        console.log(calcular(5,4,4));
+
+        /*
+            ¿Qué se imprime tras ejecutar este código?
+            a. 0 1 2 3 4
+            b. 0 1 2 4 empieza de 0 y si es igual a 3 no lo toma en cuenta y sigue
+            c. 1 2 3 4
+        */
+        for (let i = 0; i < 5; i++) {  
+            if (i === 3) continue;  
+            console.log(i);  
+        }
+        /*
+            Completa la función para que devuelva un array con el número
+de letras       
+            de cada palabra
+        */
+function contarLetrasPalabras(arr){
+       const cantPalabras = [];
+        for (let i of arr){
+            cantPalabras.push(i.length);
+        }
+        return cantPalabras;
+       }
+       const palabras = ["uno", "dos", "tres", "cuatro"];
+       console.log(contarLetrasPalabras((palabras)));
+
+            /*
+        ¿Qué imprime el siguiente código?
+        a. [1, 2, 3]
+        b. [4, 5]
+        c. [1, 2, 3, 4, 5] copia todo el array original y le suma 4 y 5
+    */
+    const numeros2 = [1, 2, 3];  
+    const copia = [...numeros2, 4, 5];  
+    console.log(copia);
+/*
+        ¿Qué imprime el siguiente código?
+        a."Hola mundo" Correcto,quita al principio y al final del texto,no en el centro
+        b." Hola mundo"
+        c."Hola mundo
+    */
+    const texto = "  Hola mundo  ";  
+    console.log(texto.trim());
+    </script>
+</body>
+</html>

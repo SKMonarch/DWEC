@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*¿Qué muestra por consola el código en la figura1?
+            a. si Muestra esta ya que  está definida fuera de la funcion
+            b. no
+            c. undefined
+        */
+        function f8(s){
+                s= "no";
+                return s;
+        }
+        let t = "si"
+        f8(t);//No hace nada,retorna un valor pero no se muestra
+        console.log(t);//Se muestra el valor ya definido fuera de la función
+        
+        /*¿Qué muestra por consola el código en la Figura2?
+            a. a=1 b=NaN c=10
+            b. a=1 b=undefined c=10 Se queda como valor undefined al no pasar ningun parametro
+            c. a=1 b=null c=10
+            
+            JavaScript no comprubea el numero de aprámetros ni el tipo 
+            */
+        function f2(a,b,c=10){
+            console.log(`a=${a}, b=${b}`+`c=${c}`)
+        }
+        f2(1);
+        /*¿Qué se imprime  por consola tras emplear el método slice en la Figura3?
+        
+            a. GENIA //AL solicitar -7 y -1 empieza desde el ultima letra por indice negativo hasta -7 por indice negativo,se quita la L porque no cuenta el valor del indice que esté posicionado
+            b. GENIAL
+            c. <empty string>
+
+        */
+        const str = "JavaScript es genial";
+        const result = str.slice(-7,-1).toUpperCase();
+        console.log(result)
+        
+        /*Escribe una función a la que se le 
+        pase como parámetro una cadena y devuleva 
+        la misma cadena invertida utilizando el 
+        metodo split y otros métodos de cadena 
+        que conozcas
+        */
+
+        function invertirCadena(cadena){
+            return cadena.split("").reverse().join("") 
+        }
+        console.log(invertirCadena("hola"));
+        /*¿Qué array se imprime por consola en la Figura4?
+            a. [1,5,6,4] Correcto
+            b. [1,2,5,6]
+            c. [1,5,6,3,4] 
+
+            //array.splice(inicio,elementosACortar,elem1,elem2)
+                empieza a borrar desde el indice 1(sin contarlo),se borran 2 y se añaden esos elementos
+            */
+        const numeros  = [1,2,3,4];
+        numeros.splice(1,2,5,6);
+        console.log(numeros);
+        /*Escribe una función que elimine todos los valores null y 
+        undefined de un array utilizando filter
+        */
+        function limpiarArray(arr){
+                return arr.filter(x => x !==null && x !==undefined);
+        }
+        const array = [0, null, "hola", undefined, 42]
+        console.log(limpiarArray(array)); // devuelve [0,"hola",42]
+        /*Tras observar la declaración del mapa en la Figura5, 
+        indica qué se mostraría por consola:
+            
+            a. 2
+            b. 3   Correcto (KeySensitive)
+            c. Error decódigo
+        */
+        const map = new Map();
+        map.set("clave1",10);
+        map.set("clave2",20);
+        map.set("clave1",30);
+        map.set("Clave2",20);
+        console.log(map.size);
+        /*
+        Crea una función a la que se le pasa un array y devuelve 
+        el array sin duplicados ni números negativos.*/
+        function LimpiarDuplicadosNegativos(arr){
+            const arraySinNegativos = arr.filter(x=>x>=0);
+            const conjunto = new Set(arraySinNegativos);
+
+            return [...conjunto]; 
+        }
+        let num = [2,-3,2,4,6,-4];
+        let res = LimpiarDuplicadosNegativos(num);
+        console.log(res);
+       /*¿Qué imprimen las siguientes operaciones por pantalla? console.log("2"*12; console.log(12+"2")
+        
+            a. NaN y 122
+            b. 24 y 14
+            c. 24 y 122 Correcto
+
+
+       */
+        console.log("2"*12);
+        console.log(12+"2");
+
+        /*Indica las instrucciones necesarias para imprimir por consola
+        el primer elemento del segundo array. De la siguiente estructura
+        de datos:
+        */
+       let conjuntoDarrays = new Set( [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+       ]);
+       let [,elemento,]= conjuntoDarrays;
+       console.log(elemento[0]);
+
+       /*Qué muestra por consola el código de la 
+       Figura6 que incluye el método map
+       
+            a. 3
+            b. 9 Correcto
+            c. 16
+            
+
+        */
+       let numeros3 = [1,2,3,4];
+       let mapa2 = new Map();
+       numeros3.forEach(num => mapa2.set(num,num * num));
+       console.log(mapa2.get(3));
+
+       /*¿Qué muestra por consola el código de la 
+       figura6 que incluye el método map?
+       
+            a. Null
+            b. Undefined  Correcto
+            c. Error de Codigo
+
+            Porque no existe
+       */
+
+       let mapa = new Map();
+       mapa.set("a",1);
+       mapa.set("b",2);
+       console.log(mapa.get("c"));
+
+       /*Completa la instruccion que falta*/
+       function contarCaracteres(str){
+            const mapa = new Map();
+            for(let char of str) {
+                
+            }
+       }
+    </script>
+</body>
+</html>

@@ -122,11 +122,12 @@ const Animal = {
             console.log(`${this.nombre} se está defendiendo!`);
         }
     }
-    
+    //llamar  a funciones del objeto
     Enemigo.atacar();
     Enemigo.defender();
 
 
+    //Añadir una funcion  al objeto
     Enemigo.huir = function() {
         console.log(`${this.nombre} está huyendo!`);
     };
@@ -134,7 +135,119 @@ const Animal = {
     Enemigo.huir(); 
 
 
-
+//borrar funcion del objeto
 delete Enemigo.atacar;
-
 console.log(Enemigo.atacar);
+
+
+
+
+const fruta = {
+        nombre:"Pera",
+        tipo:"Conferencia",
+        precio:2.95,
+        descuento:true,
+        info: function () {
+            return `La fruta ${this.nombre} de tipo ${this.tipo} tiene un precio de ${this.precio}`;
+        },
+        precioDescuento: function(){
+            if(this.descuento)
+                return this.precio -0.5;
+        },
+        actualizarPrecio: function(nuevoprecio){
+            this.precio = nuevoprecio;
+            
+        }
+    }
+
+
+console.table(fruta);
+//añadir propiedades a un objeto
+
+fruta.color = "Verde";
+
+//añadir métodos a un objeto
+//nombreObjeto.nombreMétodo = function() { // instrcciones}
+//Añade un método que compare dos frutas y devuelva una cadena indicando cuál es la fruta que menos vale
+
+fruta.compararPrecio = function (otraFruta) {
+    if (this.precio < otraFruta.precio) {
+        return `${this.nombre} es más barata que ${otraFruta.nombre}`;
+    } else if (this.precio > otraFruta.precio) {
+        return `${otraFruta.nombre} es más barata que ${this.nombre}`;
+    } else {
+        return `Ambas frutas tienen el mismo precio`;
+    }
+}
+
+
+
+
+//llamadas a
+
+console.log(fruta.info());
+console.log(`El precio con descuento es : ${fruta.precioDescuento()}`);
+
+
+const fruta2 = {
+    nombre:"Manza",
+    tipo:"Conferencia",
+    precio:1.95,
+    descuento:true,
+    info: function () {
+        return `La fruta ${this.nombre} de tipo ${this.tipo} tiene un precio de ${this.precio}`;
+    },
+    precioDescuento: function(){
+        if(this.descuento)
+            return this.precio -0.5;
+    },
+    actualizarPrecio: function(nuevoprecio){
+        this.precio = nuevoprecio;
+        
+    }
+}
+
+
+console.log(fruta.compararPrecio(fruta2));
+
+
+
+//eliminar propiedades o metodos
+//delete nombreObjeto.nombrePropiedad
+//delete nombreObjeto.nombreMétodo
+
+//VISUALIZAR un objeto
+console.log(fruta.nombre);
+
+//for..in for..of _> no funciona el objeto no es iterable directamente
+for(let a in fruta){
+    if (typeof fruta[a]!=='function'){
+        console.log(fruta[a])
+    }
+}
+
+
+
+//métodos: Object.values(nombreObnjeto), Object.keys(nombreObjeto), Object.entries(nombreObjeto)
+//Cada uno de ellos devuelve un array, con los valores del objeto, con las claves del objeto, y con los pares
+//clava-valor del objeto
+
+
+console.log(Object.values(fruta));
+
+console.log(Object.keys(fruta));
+console.log(Object.entries(fruta));
+
+
+for (let valor of Object.values(fruta)){
+    if(typeof valor !== 'function'){
+        console.log(valor;)
+    }
+}
+
+
+
+
+//Convierte a una cadena de texto en formato JSON
+const cadenaObjeto = JSON.stringify(fruta);
+console.log(cadenaObjeto);

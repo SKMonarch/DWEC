@@ -337,6 +337,7 @@ const hija = Object.create(miMadre);
 hija.nombre = "Ana";
 hija.apellido1 = "Santo";
 console.log(hija.nombreCompleto()); 
+console.log(hija);
 console.log("================================");
 
 console.log("Object.assign()"); 
@@ -358,7 +359,7 @@ console.log("Object.seal()");
 Object.seal(copiaMadre);
 copiaMadre.apellido1 = "Santos"; // Permitido
 delete copiaMadre.apellido2; // No permitido
-console.log(copiaMadre);
+console.log(copiaMadre.apellido1);
 console.log("================================");
 console.log("Object.isSealed()");
 // Verificar si copiaMadre está sellado

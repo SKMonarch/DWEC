@@ -111,4 +111,12 @@ console.log(enlace);
 enlace[0].title = "Enlace a Google;"
 
 
+/*CAMBIAR ESTILOS CSS CON JAVASCRIPT 
+    background-color backgroundColor
+    font-size fontSize
+    */
+
+titulo.style.color = "green";
+titulo.style.backgroundColor = "lightblue";
+
     

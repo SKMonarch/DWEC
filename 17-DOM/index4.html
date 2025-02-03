@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="encabezado">saludo</h1>
+    <button id="btn1">Borrar Eventos</button>
+    <p id="eventos">Información de los eventoss</p>
+    <p id="eventos2">Texto orginal</p>
+    <p id="p1">Parrafo1</p>
+    <p id="p2">Parrafo2</p>
+    <p id="p3">Re saludo con tu nombre</p>
+    <div id="miElementoPadre">
+        <p id="miElemento">Elemento 1</p>
+        <p>Elemento 2</p>
+        <p>Elemento 3</p>
+    </div>
+
+    <script>
+        /*
+            addEventListener("click",funcion,false/true)
+                funcion anonima, arrow function
+                el nombre de una funcion sin parentesis
+        */
+       const encabezado = document.getElementById("encabezado");
+       encabezado.addEventListener("click",saludo)
+       encabezado.addEventListener("click",saludo2)
+       encabezado.addEventListener("click",cambiarColor)
+
+
+
+       function saludo(){
+        alert("hola")
+       }
+       function saludo2(){
+        alert("Que tal?")
+       }
+       function cambiarColor(){
+        encabezado.style.color = "red";
+       }
+       /*
+       encabezado.addEventListener("click",function(){
+            alert("hola");
+            })*/
+
+        //removeEventListener("click",funcion) solo se puede usar con funciones especificas
+        document.getElementById("btn1").addEventListener("click",borrarEventos);
+       let colorOriginal =encabezado.style.color;
+        function borrarEventos(){
+            encabezado.removeEventListener("click",saludo);
+            encabezado.removeEventListener("click",saludo2);
+            encabezado.removeEventListener("click",cambiarColor);
+            encabezado.style.color = colorOriginal;
+       }
+       
+
+       //Información de los eventos
+       const eventos = document.getElementById("eventos");
+    eventos.addEventListener("mouseover", cambiarEstilo);
+    eventos.addEventListener("mouseout", cambiarEstilo);
+
+    function cambiarEstilo(e) {
+        //e.type se accede al evento lanzado
+        //e.target se accede al elemento que tiene el evento
+        //console.log(e.type);
+        //console.log(e.target);
+        if (e.type === "mouseover") {
+            eventos.style.color = "red";
+        } else if (e.type === "mouseout") {
+            eventos.style.color = "initial";
+        }
+    }
+
+    const eventos2 = document.getElementById("eventos2");
+   eventos2.addEventListener("mouseover", cambiarTexto);
+   eventos2.addEventListener("mouseout", cambiarTexto);
+
+    function cambiarTexto(e) {
+        if (e.type === "mouseover") {
+            eventos2.textContent = "Texto Cambiado";
+        } else if (e.type === "mouseout") {
+            eventos2.textContent = "Texto original";
+            }
+    }
+    const eventos3 = document.getElementById("eventos2");
+    eventos3.addEventListener("click", mensaje);
+
+    function mensaje(e) {
+        if (e.target.id === "p1") {
+            console.log(`hola ${e.target.innerHTML}`);
+        } else if (e.target.id === "p2") {
+            console.log(`hola ${e.target.innerHTML}`);
+        }
+    }
+
+
+     //Como pasar parametros en addEventListener
+        
+     document.getElementById("p3").addEventListener("click", function(){
+    let nombre = prompt("Introduce tu nombre");
+    saludoNombre(nombre);
+    });
+
+    function saludoNombre(n) {
+        alert(`Hola ${n}`);
+    }
+    /*NAVEGAR POR EL DOM*/
+    /*
+    Propiedades de los nodos
+        nodeName: H1, P, DIV....
+        nodeType: es un número 1 nodo elemento, 2 nodo atributo, 3 nodo texto
+        nodeValue: nodo elemento valor null, nodo texto contenido de texto
+    */
+
+    console.log(encabezado.nodeName);
+    console.log(encabezado.nodeType);
+    console.log(encabezado.nodeValue);
+    console.log(encabezado.firstChild.nodeName);
+    console.log(encabezado.firstChild.nodeValue);
+    console.log(encabezado.firstChild.nodeType);
+
+
+    /*
+    Relaciones
+    parentNode
+    firstChild /firstElementChild
+    lastChild / lastElementChild
+    nextSibling /nextElementSibling
+    previousSibling /previousElementSibling
+    children / childNodes
+    */
+
+    console.log(encabezado.parentNode)
+    let elemento = document.getElementById('miElemento');
+        
+        // parentNode
+        console.log(elemento.parentNode);  // Muestra el nodo padre <div>
+
+        // firstChild / firstElementChild
+        console.log(elemento.parentNode.firstChild);  // Puede ser un nodo de texto
+        console.log(elemento.parentNode.firstElementChild);  // El primer <p>
+
+        // lastChild / lastElementChild
+        console.log(elemento.parentNode.lastChild);  // Puede ser un nodo de texto
+        console.log(elemento.parentNode.lastElementChild);  // Último <p>
+
+        // nextSibling / nextElementSibling
+        console.log(elemento.nextSibling);  // Nodo siguiente (puede ser texto)
+        console.log(elemento.nextElementSibling);  // Siguiente <p>
+
+        // previousSibling / previousElementSibling
+        console.log(elemento.previousSibling);  // Nodo anterior (puede ser texto)
+        console.log(elemento.previousElementSibling);  // Anterior <p>
+
+        // children / childNodes
+        console.log(elemento.parentNode.children);  // Elementos hijos
+        console.log(elemento.parentNode.childNodes);  // To
+  </script>
+</body>
+</html>

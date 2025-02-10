@@ -34,7 +34,7 @@
         function añadirTarea(){
             let valor = input.value.trim();
             if (!valor){
-                alert("Introduzca una tarea");
+                alert("Introduzca alguna tarea");
             } else {
                 const liTarea = document.createElement("li");
                 const textoTarea = document.createTextNode(valor);
@@ -49,12 +49,29 @@
             }
         }
 
-        //Borrado de tareas
-        const borrar = document.getElementById("borrar");
-        borrar.addEventListener("click", borrarTarea)
+       
 
-        function borrarTarea(){
+        function crearElemento(elemento, texto, padre){
+            const ele = document.createElement(elemento);
+            const text = document.createTextNode(texto);
+            ele.appendChild(text);
+            //ele.textContent = text;
 
+
+            const btnEliminar = document.createElement("span");
+            btnEliminar.textContent = "X";
+            //setAttribute("class"."eliminar");
+            //btnEliminar.setAttribute("class","eliminar")
+            //btnEliminar.setAttribute("class","separar")
+            //Sobreescribe la clase
+            btnEliminar.classList.add("eliminar")
+            btnEliminar.classList.add("separar")
+            ele.appendChild(btnEliminar);
+            btnEliminar.addEventListener("click",function(){
+                padre.removeChild(ele);
+            })
+
+            padre.appendChild(ele)
         }
     </script>
 </body>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="padre">
+        <div class="hijo">
+            <p class="nieto1">Nieto 1</p>
+            <p class="nieto2">Nieto 2</p>
+            <p class="nieto3">Nieto 3</p>
+        </div>
+    </div>
+
+    <ul id="lista">
+        <li class="item1">Item 1</li>
+        <li class="item2">Item 2</li>
+    </ul>
+    <script>
+        /*
+                Navegar por el DOM
+            parentNode / parentElement
+            firstChild / firstElementChild
+            ...
+            children[] / childNodes []
+        */
+        const hijo = document.querySelectorAll("div.hijo")[0];
+        console.log(hijo.parentElement);
+        console.log(hijo.firstElementChild); //nieto1
+        console.log(hijo.firstChild); //#text
+        console.log(hijo.lastChild); //#text
+        console.log(hijo.lastElementChild);
+        console.log(hijo.firstElementChild.nextElementSibling);
+        console.log(hijo.children[1]); //nieto2
+
+        /*
+                Añadir y eliminar contenido html
+            - Pasos:
+            Crear el elemento, document.createElement("li");
+            Crear el nodo de texto, document.createTextNode("Texto que quieras");
+            Añado el hijo nodo texto al elemento, padre.appendChild("hijo"); Añade al final
+            El elemento creado lo añado al body o a otro elemento con appendChild
+        */
+        //Creo el li
+        const li3 = document.createElement("li");
+        //Creo el texto del li
+        const textoLi3 = document.createTextNode("Item 3");
+        //Añado el texto al li
+        li3.appendChild(textoLi3);
+        /*
+            elemento.setAttribute("class", "item3");
+        */
+        li3.setAttribute("class", "item3");
+        //Añado el li ya creado a la lista
+        const lista = document.getElementById("lista");
+        lista.appendChild(li3);
+        console.log(lista.children[2]);
+    </script>
+</body>
+</html>

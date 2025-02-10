@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            background-color: red;
+            border: 2px solid black;
+            text-align: center;
+            border-radius: 5px;
+            display: inline-block;
+            width: 20px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Insertar tareas</h1>
+    <input type="text" id="input">
+    <button id="btn1">Añadir</button>
+    <ul id="tareas"></ul>
+    <script>
+        //Referencia a elementos
+        const input = document.getElementById("input");
+        const btn1 = document.getElementById("btn1")
+        const tareas = document.getElementById("tareas");
+
+        //addEventListener
+        btn1.addEventListener("click", añadirTarea);
+
+        //Función
+        function añadirTarea(){
+            let valor = input.value.trim();
+            if (!valor){
+                alert("Introduzca una tarea");
+            } else {
+                const liTarea = document.createElement("li");
+                const textoTarea = document.createTextNode(valor);
+                liTarea.setAttribute("id", "tarea");
+                liTarea.appendChild(textoTarea);
+                const aX = document.createElement("a")
+                const textoA = document.createTextNode("X");
+                aX.setAttribute("id", "borrar");
+                aX.appendChild(textoA);
+                liTarea.appendChild(aX);
+                tareas.appendChild(liTarea);
+            }
+        }
+
+        //Borrado de tareas
+        const borrar = document.getElementById("borrar");
+        borrar.addEventListener("click", borrarTarea)
+
+        function borrarTarea(){
+
+        }
+    </script>
+</body>
+</html>
